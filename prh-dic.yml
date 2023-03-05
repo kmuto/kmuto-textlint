@@ -1,0 +1,71 @@
+version: 1
+rules:
+  - expected: Mackerel
+    pattern:
+      - Mackrel
+      - Mackerl
+      - Makerel
+      - Makerl
+      - Mckerel
+      - Makarel
+      - Makalel
+      - Mackelel
+    prh: タイプミス
+  - expected: mackerel
+    pattern:
+      - mackrel
+      - mackerl
+      - makerel
+      - makerl
+      - mckerel
+      - makarel
+      - makalel
+      - mackelel
+    prh: タイプミス
+  - expected: default
+    pattern: deflaut
+    prh: タイプミス
+  - expected: JavaScript
+    pattern:
+      - Javascript
+      - javascript
+    prh: タイプミス
+  - expected: 致し
+    pattern: いたし
+    prh: ひらがなにしたほうが読みやすい
+  - expected: いただ$1
+    pattern: /頂([かきくけこ])/
+    prh: ひらがなにしたほうが読みやすい。山頂の場合は「頂き」ママ
+  - expected: ご存じ
+    pattern: ご存知
+    prh: ひらがなにしたほうが読みやすい
+  - expected: さまざま
+    pattern: 様々
+    prh: ひらがなにしたほうが読みやすい
+  - expected: ときどき
+    pattern: 時々
+    prh: ひらがなにしたほうが読みやすい
+  - expected: すべて
+    pattern: 全て
+    prh: ひらがなにしたほうが読みやすい
+  - expected: まったく
+    pattern: 全く
+    prh: ひらがなにしたほうが読みやすい
+  - expected: わか$1
+    pattern: /分か([らりるれろ])/
+    prh: ひらがなにしたほうが読みやすい。分離の意の場合は漢字ママ
+  - expected: 沢山
+    pattern: たくさん
+    prh: ひらがなにしたほうが読みやすい
+  - expected: でき$1
+    pattern: /出来([なまるれ、])/
+    prh: ひらがなにしたほうが読みやすい
+  - expected: あわせ
+    pattern: 併せ
+    prh: ひらがなにしたほうが読みやすい
+  - expected: 稼働
+    pattern: 稼動
+    prh: 表記統一
+  - expected: 行$1
+    pattern: /行な([いうえおわ])/
+    prh: 表記統一

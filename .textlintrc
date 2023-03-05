@@ -1,0 +1,70 @@
+{
+  "scripts" : {
+   "build": "textlint-scripts build",
+   "test": "textlint-scripts test"
+  },
+  "plugins": {
+    "@textlint/markdown": true,
+    "@textlint/text": true
+  },
+
+  "rules": {
+    "preset-ja-technical-writing": {
+      "sentence-length": {
+        "max": 160 // 行文字数緩和
+      },
+      "max-comma": false, // カンマ・読点の数の制限はしない
+      "max-ten": false,
+      "max-kanji-continuous-len": false, // 漢字最大長。allowで辞書化はできるがひとまず自動検査では不要と判断
+      "arabic-kanji-numbers": true, // 漢数字・アラビア数字
+      "no-mix-dearu-desumasu": {
+        "preferInHeader": "", // "である" or "ですます"
+        "preferInBody": "ですます",// "である" or "ですます"
+        "preferInList": "である",    // "である" or "ですます"
+         // 文末以外でも、敬体(ですます調)と常体(である調)を厳しくチェックするかどうか
+        "strict": false
+      },
+      "ja-no-mixed-period": { // 段落末尾
+        allowPeriodMarks: ["〜", "…", "："],
+        allowEmojiAtEnd: true
+      },
+      "no-double-negative-ja": true, // 二重否定防止
+      "no-dropping-the-ra": true, // ら抜き言葉
+      "no-doubled-conjunctive-particle-ga": true, // 逆接を2回使っている
+      "no-doubled-conjunction": true, // しかししかし などの連続
+      "no-doubled-joshi": false, // 助詞連続防止。アラート出やすく、調整が難しい
+      "no-nfd": true, // UTF-8-MAC防止
+      "no-invalid-control-character": true, // 制御文字防止
+      "no-zero-width-spaces": true, // ゼロ幅スペース防止
+      "no-exclamation-question-mark": false, // !,?は許可したい(全角半角はチェックしたいな)
+      "no-hankaku-kana": true, // 半角カナ防止
+      "ja-no-weak-phrase": false, // かもしれない・思います 除去。やりすぎ
+      "ja-no-successive-word": true, // 同一単語連続
+      "ja-no-abusage": true, // 漢字誤用
+      "ja-no-redundant-expression": false, // することができる禁止。望ましくはないのは同意するが強調表現まで制約してしまうのはよくない
+      "ja-unnatural-alphabet": true, // タイポチェック
+      "no-unmatched-pair": true, // 対カッコチェック
+    },
+    "preset-ja-spacing": {
+      "ja-space-after-exclamation": false, // !後の全角スペース限定をやめる。逆に半角のほうがいいんだが…
+      "ja-space-after-question": false, // !後の全角スペース限定をやめる。逆に半角のほうがいいんだが…
+    },
+    "no-kangxi-radicals": true,
+    "ja-hiragana-fukushi": true, // 副詞。辞書カスタムしたほうがよいかも
+    "ja-hiragana-keishikimeishi": {
+      "detection_ue": false,
+    },
+    "ja-hiragana-hojodoushi": true, // 補助動詞。辞書カスタムしたほうがよいかも
+    "@textlint-ja/no-synonyms": true, // 同義語揺れ
+    "preset-jtf-style": {
+      "1.1.1.本文": false,
+      "1.2.1.句点(。)と読点(、)": true,
+      "1.2.2.ピリオド(.)とカンマ(,)": false,
+      "4.1.3.ピリオド(.)、カンマ(,)": false,
+      "4.3.2.大かっこ［］": false,
+    },
+    "prh": {
+      "rulePaths": ["prh-dic.yml"]
+    }
+  }
+}
